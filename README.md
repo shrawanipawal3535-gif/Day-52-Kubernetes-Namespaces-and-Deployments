@@ -187,6 +187,18 @@ kubectl delete pod nginx-staging -n staging
 
 kubectl delete namespace dev staging production
 
+<img width="1059" height="277" alt="Image" src="https://github.com/user-attachments/assets/e84cf1bd-8909-44b4-932a-ecca5eccdad4" />
+
+Deleting a namespace removes everything inside it. Be very careful with this in production.
+
+kubectl get namespaces
+
+<img width="842" height="169" alt="Image" src="https://github.com/user-attachments/assets/2b8de6d5-ac23-470e-8d4e-8beb5c217052" />
+
+kubectl get pods -A
+
+<img width="973" height="510" alt="Image" src="https://github.com/user-attachments/assets/5c1a3aeb-1dd5-48c3-85a9-3cbc5e2a1855" />
+
 
 
 
