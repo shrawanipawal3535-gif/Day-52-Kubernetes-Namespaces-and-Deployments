@@ -78,6 +78,8 @@ A Deployment tells Kubernetes: "I want X replicas of this Pod running at all tim
 
 Create a file nginx-deployment.yaml:
 
+<img width="735" height="474" alt="Image" src="https://github.com/user-attachments/assets/7e37b4f6-3675-4ffc-bfdc-b5b711077230" />
+
 Key differences from a standalone Pod:
 
 - kind: Deployment instead of kind: Pod
@@ -98,10 +100,20 @@ kubectl get deployments -n dev
 
 <img width="991" height="217" alt="Image" src="https://github.com/user-attachments/assets/d730f4fe-62a6-491a-a3dd-6f6160f52728" />
 
+# Task 4: Self-Healing — Delete a Pod and Watch It Come Back
+
+This is the key difference between a Deployment and a standalone Pod.
+
+# List pods
 kubectl get pods -n dev
 
 <img width="951" height="160" alt="Image" src="https://github.com/user-attachments/assets/5eda8442-9006-4756-acba-50c824d4a0a2" />
 
+# Delete one of the deployment's pods (use an actual pod name from your output)
+kubectl delete pod <pod-name> -n dev
+
+# Immediately check again
+kubectl get pods -n dev
 
 
 
