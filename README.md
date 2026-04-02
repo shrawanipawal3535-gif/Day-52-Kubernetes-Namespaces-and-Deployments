@@ -39,6 +39,7 @@ kubectl get pods -n kube-system
 Create two namespaces — one for a development environment and one for staging:
 
 kubectl create namespace dev
+
 kubectl create namespace staging
 
 <img width="901" height="111" alt="Image" src="https://github.com/user-attachments/assets/c3462378-595e-4b99-b333-9203d4729f75" />
@@ -47,15 +48,19 @@ Verify they exist:
 
 kubectl get namespaces
 
+<img width="779" height="184" alt="Image" src="https://github.com/user-attachments/assets/703df4ca-e85d-483d-b31f-c3d1fd1f4839" />
+
 You can also create a namespace from a manifest:
+
+<img width="505" height="120" alt="Image" src="https://github.com/user-attachments/assets/23a5f334-3cb2-4e74-b1d8-376bb6ea1e5e" />
 
 kubectl apply -f namespace.yaml
 
-<img width="779" height="184" alt="Image" src="https://github.com/user-attachments/assets/703df4ca-e85d-483d-b31f-c3d1fd1f4839" />
+<img width="809" height="42" alt="Image" src="https://github.com/user-attachments/assets/1f29de83-2d42-4505-be80-22c1815ca6e9" />
+
+Now run a pod in a specific namespace:
 
 kubectl run nginx-dev --image=nginx:latest -n dev
-
-<img width="809" height="42" alt="Image" src="https://github.com/user-attachments/assets/1f29de83-2d42-4505-be80-22c1815ca6e9" />
 
 kubectl run nginx-staging --image=nginx:latest -n staging
 
@@ -66,6 +71,29 @@ List pods across all namespaces:
 kubectl get pods -A
 
 <img width="1093" height="504" alt="Image" src="https://github.com/user-attachments/assets/21711cd7-b934-4555-94a0-e614ba2e7893" />
+
+## Task 3: Create Your First Deployment
+
+A Deployment tells Kubernetes: "I want X replicas of this Pod running at all times." If a Pod crashes, the Deployment controller recreates it automatically.
+
+Create a file nginx-deployment.yaml:
+
+Key differences from a standalone Pod:
+
+- kind: Deployment instead of kind: Pod
+- apiVersion: apps/v1 instead of v1
+- replicas: 3 tells Kubernetes to maintain 3 identical pods
+- selector.matchLabels connects the Deployment to its Pods
+- template is the Pod template — the Deployment creates Pods using this blueprint
+
+Apply it:
+
+kubectl apply -f nginx-deployment.yaml
+
+Check the result:
+
+kubectl get deployments -n dev
+kubectl get pods -n dev
 
 
 
