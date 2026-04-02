@@ -129,11 +129,32 @@ kubectl scale deployment nginx-deployment --replicas=5 -n dev
 
 kubectl get pods -n dev
 
+<img width="1074" height="262" alt="Image" src="https://github.com/user-attachments/assets/6ca35086-ffd3-4c91-98c9-39b505ff9b24" />
+
 # Scale down to 2
 
 kubectl scale deployment nginx-deployment --replicas=2 -n dev
 
 kubectl get pods -n dev
+
+<img width="1128" height="192" alt="Image" src="https://github.com/user-attachments/assets/f1501111-13c5-4aef-9a27-9a6b4a94dd56" />
+
+## Task 6: Rolling Update
+
+Update the Nginx image version to trigger a rolling update:
+
+kubectl set image deployment/nginx-deployment nginx=nginx:1.25 -n dev
+
+Watch the rollout in real time:
+
+kubectl rollout status deployment/nginx-deployment -n dev
+
+Kubernetes replaces pods one by one — old pods are terminated only after new ones are healthy. This means zero downtime.
+
+Check the rollout history:
+
+kubectl rollout history deployment/nginx-deployment -n dev
+
 
 
 
