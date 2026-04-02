@@ -41,6 +41,8 @@ Create two namespaces — one for a development environment and one for staging:
 kubectl create namespace dev
 kubectl create namespace staging
 
+<img width="901" height="111" alt="Image" src="https://github.com/user-attachments/assets/c3462378-595e-4b99-b333-9203d4729f75" />
+
 Verify they exist:
 
 kubectl get namespaces
@@ -49,12 +51,21 @@ You can also create a namespace from a manifest:
 
 kubectl apply -f namespace.yaml
 
-Now run a pod in a specific namespace:
+<img width="779" height="184" alt="Image" src="https://github.com/user-attachments/assets/703df4ca-e85d-483d-b31f-c3d1fd1f4839" />
 
 kubectl run nginx-dev --image=nginx:latest -n dev
+
+<img width="809" height="42" alt="Image" src="https://github.com/user-attachments/assets/1f29de83-2d42-4505-be80-22c1815ca6e9" />
+
 kubectl run nginx-staging --image=nginx:latest -n staging
+
+<img width="965" height="82" alt="Image" src="https://github.com/user-attachments/assets/4d496fd8-8c38-485f-8f74-38ffd35ef42f" />
 
 List pods across all namespaces:
 
 kubectl get pods -A
+
+<img width="1093" height="504" alt="Image" src="https://github.com/user-attachments/assets/21711cd7-b934-4555-94a0-e614ba2e7893" />
+
+
 
