@@ -145,15 +145,47 @@ Update the Nginx image version to trigger a rolling update:
 
 kubectl set image deployment/nginx-deployment nginx=nginx:1.25 -n dev
 
+<img width="1060" height="80" alt="Image" src="https://github.com/user-attachments/assets/fe730fd4-d612-4e56-9d94-655332ea89e7" />
+
 Watch the rollout in real time:
 
 kubectl rollout status deployment/nginx-deployment -n dev
+
+<img width="995" height="73" alt="Image" src="https://github.com/user-attachments/assets/1022f85e-f847-48b9-acfa-1d9294d2372f" />
 
 Kubernetes replaces pods one by one — old pods are terminated only after new ones are healthy. This means zero downtime.
 
 Check the rollout history:
 
 kubectl rollout history deployment/nginx-deployment -n dev
+
+<img width="1048" height="153" alt="Image" src="https://github.com/user-attachments/assets/9d45819a-9ba8-4f04-b387-2b10e3bfcaf6" />
+
+Now roll back to the previous version:
+
+kubectl rollout undo deployment/nginx-deployment -n dev
+
+<img width="1016" height="80" alt="Image" src="https://github.com/user-attachments/assets/0b055662-0858-4654-8f76-1317c71a64ea" />
+
+kubectl rollout status deployment/nginx-deployment -n dev
+
+<img width="1012" height="73" alt="Image" src="https://github.com/user-attachments/assets/37137817-846c-4ddf-b9de-fcbc775a340d" />
+
+Verify the image is back to the previous version:
+
+kubectl describe deployment nginx-deployment -n dev | grep Image
+
+<img width="1077" height="71" alt="Image" src="https://github.com/user-attachments/assets/2499b3c9-4f0d-4e35-b4c3-81aad6b0f85c" />
+
+## Task 7: Clean Up
+
+kubectl delete deployment nginx-deployment -n dev
+
+kubectl delete pod nginx-dev -n dev
+
+kubectl delete pod nginx-staging -n staging
+
+kubectl delete namespace dev staging production
 
 
 
