@@ -90,10 +90,19 @@ Apply it:
 
 kubectl apply -f nginx-deployment.yaml
 
+<img width="1019" height="52" alt="Image" src="https://github.com/user-attachments/assets/26effa56-4fc6-44b2-8147-cf54561ee90e" />
+
 Check the result:
 
 kubectl get deployments -n dev
+
+<img width="991" height="217" alt="Image" src="https://github.com/user-attachments/assets/d730f4fe-62a6-491a-a3dd-6f6160f52728" />
+
 kubectl get pods -n dev
+
+<img width="951" height="160" alt="Image" src="https://github.com/user-attachments/assets/5eda8442-9006-4756-acba-50c824d4a0a2" />
+
+
 
 
 
