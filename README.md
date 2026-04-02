@@ -112,8 +112,30 @@ kubectl get pods -n dev
 # Delete one of the deployment's pods (use an actual pod name from your output)
 kubectl delete pod <pod-name> -n dev
 
+<img width="986" height="72" alt="Image" src="https://github.com/user-attachments/assets/edd01697-973d-44a4-9443-6f3f899f0e6e" />
+
 # Immediately check again
 kubectl get pods -n dev
+
+<img width="1044" height="150" alt="Image" src="https://github.com/user-attachments/assets/ffe8be67-d7bc-4677-96b5-bce5db15ece5" />
+
+# Task 5: Scale the Deployment
+
+Change the number of replicas:
+
+# Scale up to 5
+
+kubectl scale deployment nginx-deployment --replicas=5 -n dev
+
+kubectl get pods -n dev
+
+# Scale down to 2
+
+kubectl scale deployment nginx-deployment --replicas=2 -n dev
+
+kubectl get pods -n dev
+
+
 
 
 
